@@ -46,8 +46,6 @@ contract("TaskManager", accounts => {
     const tasksListRefetch = await Promise.all(emptyTasksList.map(i => getTask(instance, i, accounts[0])));
 
     console.warn(tasksListRefetch)
-
     console.warn("Address", instance)
-
   });
 });
