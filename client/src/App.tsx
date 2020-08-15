@@ -1,38 +1,33 @@
-import { Contract, ethers } from "ethers";
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import styled from 'styled-components';
 import './App.css';
-import TaskManager from "./contracts/TaskManager.json";
-import logo from './logo.svg';
+import Modal from './components/Modal';
+import ModalProvider from './context/ModalContext';
 
-const App: React.FunctionComponent = () => {
+const App: React.FC = () => {
 
-  const provider = new ethers.providers.JsonRpcProvider('http://localhost:7545');
-  const signer = provider.getSigner();
+  const Home = lazy(() => import("./pages/Home"));
 
-  const interact = async () => {
-    const contract = new Contract('0xDD31006257504A6B838aef3fA3C97ea87a07b633', TaskManager.abi, provider);
-    // const tx = await contract.createTask('Test');
-    const taskCountRaw = await contract.getTasksCount();
-    console.warn(taskCountRaw.toNumber());
-  }
+  const AppWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          onClick={interact}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={null}>
+      <AppWrapper>
+        <BrowserRouter>
+          <ModalProvider>
+            <Modal />
+            <Switch>
+              <Route exact strict path="/" component={() => <Home />} />
+            </Switch>
+          </ModalProvider>
+        </BrowserRouter>
+      </AppWrapper>
+    </Suspense>
   );
 }
 
