@@ -47,5 +47,7 @@ contract("TaskManager", accounts => {
 
     console.warn(tasksListRefetch)
 
+    console.warn("Address", instance)
+
   });
 });

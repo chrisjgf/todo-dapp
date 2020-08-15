@@ -1,0 +1,11 @@
+{
+  "name": "todo-dapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "chrisjgf <chrisjgf@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.0.42",
+    "dotenv": "^8.2.0"
+  }
+}
