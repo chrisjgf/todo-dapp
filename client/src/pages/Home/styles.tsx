@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mediaQueries } from "../../theme";
 
 export const Home = styled.div`
   display: flex;
@@ -11,5 +12,14 @@ export const Home = styled.div`
 `;
 
 export const TaskWrapper = styled.div`
-  transition: all 1s ease-in;
+  transition: all 0.5s ease-in;
+  width: 95%;
+
+  ${mediaQueries("lg")`
+    width: 66%;
+  `};
+
+  ${mediaQueries("xl")`
+    width: 50%;
+  `};
 `;

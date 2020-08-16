@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mediaQueries } from "../../theme";
 
 export const Modal = styled.div`
   background-color: rgba(0, 0, 0, 0.33);
@@ -17,7 +18,15 @@ export const Modal = styled.div`
 export const Container = styled.div`
   background: white;
   height: 35vh;
-  width: 33vw; 
+  width: 95%;
+
+  ${mediaQueries("lg")`
+    width: 66%;
+  `};
+
+  ${mediaQueries("xl")`
+    width: 33%;
+  `};
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -32,11 +41,11 @@ export const Header = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  
+
   p {
     font-weight: bold;
   }
-  
+
   button {
     cursor: pointer;
   }
@@ -52,14 +61,14 @@ export const Body = styled.div`
 export const CloseIcon = styled.div`
   height: 1.75rem;
   width: 1.75rem;
-  
+
   &:hover {
     cursor: pointer;
     opacity: 0.6;
   }
-  
+
   img {
     width: 100%;
     height: 100%;
   }
-`
+`;

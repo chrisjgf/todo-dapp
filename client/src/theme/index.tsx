@@ -1,17 +1,32 @@
 import React from "react";
-import { createGlobalStyle, DefaultTheme, ThemeProvider } from "styled-components";
+import {
+  createGlobalStyle,
+  DefaultTheme,
+  ThemeProvider,
+} from "styled-components";
 
-export default ({ children }: any) =>
+export default ({ children }: any) => (
   <ThemeProvider theme={theme}> {children} </ThemeProvider>
+);
+
+export const breakpoints = {
+  sm: 20,
+  md: 30,
+  lg: 45,
+  xl: 60,
+};
+
+export const mediaQueries = (key: keyof typeof breakpoints) => {
+  return (style: TemplateStringsArray | String) =>
+    `@media (min-width: ${breakpoints[key]}em) { ${style} }`;
+};
 
 const theme: DefaultTheme = {
-  maxWidth: "640px",
-
   colors: {
     defaultBackground: "#EEF5EE",
     white: "#fff",
     black: "#000",
-  }
+  },
 };
 
 export const GlobalStyle = createGlobalStyle`

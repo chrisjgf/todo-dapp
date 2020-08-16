@@ -1,6 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Input from "../../components/Input";
 import TaskItem, { Task } from "../../components/TaskItem";
 import TaskManager from "../../contracts/TaskManager.json";
@@ -68,7 +68,7 @@ const Home: React.FC = () => {
   return (
     <S.Home>
       <Input placeholder={"Enter your task here"} onSubmit={addTask} />
-      <S.TaskWrapper style={{ width: "50%" }}>
+      <S.TaskWrapper>
         {!!tasks &&
           tasks.map((task, i) => (
             <TaskItem
