@@ -8,17 +8,14 @@ const theme: DefaultTheme = {
   maxWidth: "640px",
 
   colors: {
+    defaultBackground: "#EEF5EE",
     white: "#fff",
     black: "#000",
   }
 };
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://rsms.me/inter/inter.css');
-  html { font-family: 'Inter', sans-serif; }
-  @supports (font-variation-settings: normal) {
-    html { font-family: 'Inter var', sans-serif; }
-  }
+  html { font-family: "Helvetica", "Arial", sans-serif; }
   
   html,
   body {
@@ -42,6 +39,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background: ${({ theme }) => theme.colors.defaultBackground};
   }
 
   input:focus,

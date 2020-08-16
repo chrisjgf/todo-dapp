@@ -5,6 +5,7 @@ declare module 'styled-components' {
     maxWidth: string;
 
     colors: {
+      defaultBackground: string;
       white: string;
       black: string;
     };

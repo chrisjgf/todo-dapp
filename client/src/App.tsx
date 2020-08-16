@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
 import Modal from './components/Modal';
+import Header from './components/Header';
 import ModalProvider from './context/ModalContext';
 
 const App: React.FC = () => {
@@ -11,7 +12,7 @@ const App: React.FC = () => {
   const AppWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 100%;
   `;
 
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
       <AppWrapper>
         <BrowserRouter>
           <ModalProvider>
+            <Header />
             <Modal />
             <Switch>
               <Route exact strict path="/" component={() => <Home />} />
