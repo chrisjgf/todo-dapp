@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
-import './App.css';
 import Modal from './components/Modal';
 import ModalProvider from './context/ModalContext';
 
