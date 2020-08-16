@@ -1,12 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import styled from 'styled-components';
-import Modal from './components/Modal';
-import Header from './components/Header';
-import ModalProvider from './context/ModalContext';
+import styled from "styled-components";
+import Modal from "./components/Modal";
+import Header from "./components/Header";
+import ModalProvider from "./context/ModalContext";
 
 const App: React.FC = () => {
-
   const Home = lazy(() => import("./pages/Home"));
 
   const AppWrapper = styled.div`
@@ -30,6 +29,6 @@ const App: React.FC = () => {
       </AppWrapper>
     </Suspense>
   );
-}
+};
 
 export default App;

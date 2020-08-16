@@ -18,8 +18,11 @@ const TaskItem: React.FC<Props> = ({ task, onPress }: Props) => {
   const handlePress = (index: number) => onPress(index);
 
   return (
-    <S.TaskItem onClick={() => !completed && handlePress(index)}>
-      <S.Title completed={completed}>{title}</S.Title>
+    <S.TaskItem
+      completed={completed}
+      onClick={() => !completed && handlePress(index)}
+    >
+      <p>{title}</p>
     </S.TaskItem>
   );
 };

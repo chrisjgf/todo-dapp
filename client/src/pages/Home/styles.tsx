@@ -11,7 +11,5 @@ export const Home = styled.div`
 `;
 
 export const TaskWrapper = styled.div`
-  display: flex;
-  justify-content: center;
   transition: all 1s ease-in;
 `;

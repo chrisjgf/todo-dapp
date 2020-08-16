@@ -35,7 +35,7 @@ const Header: React.FC<Props> = (props: Props) => {
 
   return (
     <S.Header>
-      <h1>🤖 Task Manager</h1>
+      <h2>🤖 Task Manager</h2>
       <S.Account active={!!account}>
         <p>
           {ethBalance &&
