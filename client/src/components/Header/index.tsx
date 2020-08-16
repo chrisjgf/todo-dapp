@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./styles";
 import { useWeb3React } from "@web3-react/core";
 import { shortenAddress } from "../../utils";
@@ -11,7 +11,7 @@ const { ConnectWallet } = ModalType;
 
 const Header: React.FC<Props> = (props: Props) => {
   const { account, library } = useWeb3React();
-  const [_, setModalVisibility] = useModalContext();
+  const [, setModalVisibility] = useModalContext();
 
   const [ethBalance, setEthBalance] = useState<string | undefined>();
 
@@ -28,14 +28,19 @@ const Header: React.FC<Props> = (props: Props) => {
       }
     };
     getBalance();
-  }, [account]);
+  }, [account, library]);
 
   const handleAccountPress = () =>
     !account && setModalVisibility(ConnectWallet);
 
   return (
     <S.Header>
-      <h2>🤖 Task Manager</h2>
+      <h2>
+        <span role="img" aria-label="robot">
+          🤖
+        </span>{" "}
+        Task Manager
+      </h2>
       <S.Account active={!!account}>
         <p>
           {ethBalance &&

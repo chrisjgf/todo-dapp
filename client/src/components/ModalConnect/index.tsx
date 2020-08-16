@@ -6,36 +6,33 @@ import { useModalContext } from "../../context/ModalContext";
 import * as S from "./styles";
 
 const ModalConnect: React.FC = () => {
-
   const { activate } = useWeb3React();
-  const [_, setModalType] = useModalContext();
+  const [, setModalType] = useModalContext();
 
   const activateConnector = (connector: AvailableConnectors) => {
-    activate(connector)
+    activate(connector);
     setModalType(undefined);
-  }
+  };
 
   const connectors = [
     {
       title: "Metamask",
       image: MetaMaskIcon,
       onClick: () => activateConnector(injected),
-      id: "connector-0"
+      id: "connector-0",
     },
-  ]
+  ];
 
   return (
     <S.ModalConnect>
-      {
-        connectors.map(({ title, image, onClick, id }) => (
-          <S.Button key={id} style={{ cursor: "pointer" }} onClick={onClick}>
-            <img src={image} />
-            <p>{title}</p>
-          </S.Button>
-        ))
-      }
+      {connectors.map(({ title, image, onClick, id }) => (
+        <S.Button key={id} style={{ cursor: "pointer" }} onClick={onClick}>
+          <img src={image} alt={title} />
+          <p>{title}</p>
+        </S.Button>
+      ))}
     </S.ModalConnect>
-  )
-}
+  );
+};
 
 export default ModalConnect;

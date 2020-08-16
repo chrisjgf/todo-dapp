@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import ReturnIcon from "../../assets/svg/return.svg";
 import * as S from "./styles";
 
@@ -12,18 +12,19 @@ const Input: React.FC<Props> = ({ onSubmit, placeholder }: Props) => {
 
   const inputRef = useRef<string | undefined>();
 
-  const handleBlur = useCallback(() => setActive(false), [active]);
-  const handleFocus = useCallback(
-    (e) => {
-      inputRef.current = e.target.value;
-      e.target.value.length > 0 && setActive(true);
-    },
-    [active]
-  );
+  const handleBlur = () => setActive(false);
+  const handleFocus = (e: any) => {
+    inputRef.current = e.target.value;
+    e.target.value.length > 0 && setActive(true);
+  };
 
   return (
     <S.Input active={active}>
+      <label htmlFor="task" className="visuallyhidden">
+        Enter task:
+      </label>
       <S.TextInput
+        id="task"
         placeholder={placeholder}
         onChange={handleFocus}
         onFocusCapture={handleFocus}

@@ -1,6 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Input from "../../components/Input";
 import TaskItem, { Task } from "../../components/TaskItem";
 import TaskManager from "../../contracts/TaskManager.json";
@@ -17,10 +17,15 @@ const Home: React.FC = () => {
 
   const addTask = async (title: string) => instance?.createTask(title);
   const completeTask = async (index: number) => instance?.completeTask(index);
-  const getTask = async (index: number) => instance?.getTask(index);
-  const getTasksCount = async () => instance?.getTasksCount();
+  const getTask = useCallback(
+    async (index: number) => instance?.getTask(index),
+    [instance]
+  );
+  const getTasksCount = useCallback(async () => instance?.getTasksCount(), [
+    instance,
+  ]);
 
-  const updateTasks = async () => {
+  const updateTasks = useCallback(async () => {
     const count = await getTasksCount();
     if (!count) return;
 
@@ -34,7 +39,7 @@ const Home: React.FC = () => {
     }));
 
     setTasks(mappedTasks);
-  };
+  }, [getTask, getTasksCount]);
 
   // Update tasks on instance change.
   useEffect(() => {
@@ -44,7 +49,7 @@ const Home: React.FC = () => {
 
     instance.on(TaskCompletedEvent, () => updateTasks());
     instance.on(TaskCreatedEvent, () => updateTasks());
-  }, [instance]);
+  }, [instance, updateTasks]);
 
   // Setup contract instance
   useEffect(() => {
