@@ -1,6 +1,6 @@
 # todo-dapp
 
-Simple todo example app for Ethereum.
+Simple todo app running on Ethereum. 
 
 ## Info:
 
