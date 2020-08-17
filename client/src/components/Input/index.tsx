@@ -25,6 +25,7 @@ const Input: React.FC<Props> = ({ onSubmit, placeholder }: Props) => {
       </label>
       <S.TextInput
         id="task"
+        aria-label="task-input"
         placeholder={placeholder}
         onChange={handleFocus}
         onFocusCapture={handleFocus}

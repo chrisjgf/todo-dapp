@@ -27,7 +27,7 @@ export const Account = styled.div<{ active: boolean }>`
     border-radius: 0.625rem;
     padding: 0.625rem 0.875rem;
     font-weight: bold;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.65);
 
     :hover,
     :active,
