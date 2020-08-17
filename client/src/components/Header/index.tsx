@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styles";
 import { useWeb3React } from "@web3-react/core";
-import { shortenAddress } from "../../utils";
+import { shortenAddress, ChainId } from "../../utils";
 import { useModalContext, ModalType } from "../../context/ModalContext";
 import { ethers } from "ethers";
 
@@ -10,7 +10,7 @@ interface Props {}
 const { ConnectWallet } = ModalType;
 
 const Header: React.FC<Props> = (props: Props) => {
-  const { account, library } = useWeb3React();
+  const { account, library, chainId } = useWeb3React();
   const [, setModalVisibility] = useModalContext();
 
   const [ethBalance, setEthBalance] = useState<string | undefined>();
@@ -42,6 +42,11 @@ const Header: React.FC<Props> = (props: Props) => {
         Task Manager
       </h2>
       <S.Account active={!!account}>
+        {chainId && (
+          <p>
+            <i>{ChainId[chainId]}</i>
+          </p>
+        )}
         <p>
           {ethBalance &&
             `${Number(ethers.utils.formatEther(ethBalance)).toFixed(4)} ETH`}

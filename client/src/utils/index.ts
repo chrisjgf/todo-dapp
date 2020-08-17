@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 
-export const buildEtherscanURL = (id: string) => `https://etherscan.io/tx/${id}`;
+export const buildEtherscanURL = (id: string) =>
+  `https://etherscan.io/tx/${id}`;
 
 export const shortenAddress = (address: string, digits = 4) => {
   if (!isAddress(address)) {
@@ -9,7 +10,7 @@ export const shortenAddress = (address: string, digits = 4) => {
   return `${address.substring(0, digits + 2)}...${address.substring(
     42 - digits
   )}`;
-}
+};
 
 export const isAddress = (value: string) => {
   try {
@@ -17,4 +18,12 @@ export const isAddress = (value: string) => {
   } catch {
     return false;
   }
-}
+};
+
+export const ChainId: { [id: number]: string } = {
+  1: "MAINNET",
+  3: "ROPSTEN",
+  4: "RINKEBY",
+  5: "GÖRLI",
+  42: "KOVAN",
+};
